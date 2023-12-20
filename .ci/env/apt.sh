@@ -14,14 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #===============================================================================
+# apt.sh文件通常用于定义项目的构建和测试环境所需的系统依赖项，例如编译工具、库文件、运行时环境等
+# 文件内容：配置环境和安装依赖项的 Bash 脚本
+# 目的：在不同的情况下配置开发环境和安装特定的工具和库
 
 component=$1
 
 function update {
+    # 更新系统的软件包列表
     sudo apt-get update
 }
 
 function add_repo {
+    # 使系统能识别并获取来自 Intel oneAPI 仓库的软件包
+    # 具体实现    下载并添加 Intel oneAPI 的 GPG 公钥
+    #             将 oneAPI 仓库的源信息添加到系统中
+    #             更新软件包列表确保仓库信息已被成功加载
     wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
     sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
     rm GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
