@@ -39,6 +39,9 @@ function add_repo {
 }
 
 function install_dpcpp {
+    # 安装 Intel DPC++ 编译器并配置
+    # 具体实现：    (向 OpenCL 的供应商目录中添加一个链接文件 intel-cpu.icd，包含 libintelocl.so库)
+    #             intel-cpu.icd文件通常是 OpenCL 实现用于查找 OpenCL 驱动程序的配置文件
     sudo apt-get install -y intel-dpcpp-cpp-compiler-2023.2.1
     sudo bash -c 'echo libintelocl.so > /etc/OpenCL/vendors/intel-cpu.icd'
     sudo mv -f /opt/intel/oneapi/compiler/latest/linux/lib/oclfpga /opt/intel/oneapi/compiler/latest/linux/lib/oclfpga_
